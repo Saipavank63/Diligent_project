@@ -16,11 +16,11 @@ def validate_deliverables():
 
     # Check file existence
     files_to_check = [
-        '../data/cleaned_diligent_dataset.csv',
-        '../deliverables/prioritized_accounts.csv',
-        '../deliverables/top_100_priority_accounts.csv',
-        '../deliverables/Executive_Summary.md',
-        '../deliverables/icp_scoring_dashboard.png'
+        'data/cleaned_diligent_dataset.csv',
+        'deliverables/prioritized_accounts.csv',
+        'deliverables/top_100_priority_accounts.csv',
+        'deliverables/Executive_Summary.md',
+        'deliverables/icp_scoring_dashboard.png'
     ]
 
     print("\nFILE VALIDATION:")
@@ -31,7 +31,7 @@ def validate_deliverables():
 
     # Load and validate data
     try:
-        df = pd.read_csv('../deliverables/prioritized_accounts.csv')
+        df = pd.read_csv('deliverables/prioritized_accounts.csv')
         print(f"\n✓ Dataset loaded successfully: {len(df)} records")
 
         # Validate key columns

@@ -324,12 +324,12 @@ class ICPScorer:
         print(top_accounts.to_string(index=False, max_colwidth=20))
 
         # Save prioritized accounts
-        output_path = '../deliverables/prioritized_accounts.csv'
+        output_path = 'deliverables/prioritized_accounts.csv'
         self.scored_df.to_csv(output_path, index=False)
         print(f"\nFull prioritized dataset saved to: {output_path}")
 
         # Save top 100 for sales team
-        top_100_path = '../deliverables/top_100_priority_accounts.csv'
+        top_100_path = 'deliverables/top_100_priority_accounts.csv'
         self.scored_df.nlargest(100, 'Total_ICP_Score').to_csv(
             top_100_path, index=False)
         print(f"Top 100 priority accounts saved to: {top_100_path}")
@@ -389,11 +389,11 @@ class ICPScorer:
                                    for comp in score_components], rotation=45)
 
         plt.tight_layout()
-        plt.savefig('../deliverables/icp_scoring_dashboard.png',
+        plt.savefig('deliverables/icp_scoring_dashboard.png',
                     dpi=300, bbox_inches='tight')
         plt.show()
 
-        print("Scoring visualization saved to ../deliverables/icp_scoring_dashboard.png")
+        print("Scoring visualization saved to deliverables/icp_scoring_dashboard.png")
 
 
 def main():
@@ -402,7 +402,7 @@ def main():
     print("="*50)
 
     # Initialize scorer with cleaned data
-    cleaned_data_path = '../data/cleaned_diligent_dataset.csv'
+    cleaned_data_path = 'data/cleaned_diligent_dataset.csv'
     scorer = ICPScorer(cleaned_data_path)
 
     # Calculate scores and generate reports

@@ -13,14 +13,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import warnings
+import os
 warnings.filterwarnings('ignore')
 
 
 def load_and_explore_data():
     """Load the dataset and perform initial exploration"""
 
-    # Load the Excel file
-    file_path = '../data/Diligent_GTM_Engineer_Exercise_with_Instructions.xlsx'
+    # Load the Excel file - use path relative to script directory
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(
+        script_dir, '..', 'data', 'Diligent_GTM_Engineer_Exercise_with_Instructions.xlsx')
 
     try:
         # Read all sheets to understand structure
@@ -125,18 +128,23 @@ if __name__ == "__main__":
     print("GTM Engineer Data Analysis - Dataset Exploration")
     print("="*60)
 
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
     df, quality_df = load_and_explore_data()
 
     if df is not None:
         analyze_key_fields(df)
 
         # Save quality assessment
-        quality_df.to_csv(
-            '../analysis/data_quality_assessment.csv', index=False)
-        print(f"\nData quality assessment saved to ../analysis/data_quality_assessment.csv")
+        quality_path = os.path.join(
+            script_dir, '..', 'analysis', 'data_quality_assessment.csv')
+        quality_df.to_csv(quality_path, index=False)
+        print(f"\nData quality assessment saved to {quality_path}")
 
         # Save sample of raw data for reference
-        df.head(20).to_csv('../analysis/sample_raw_data.csv', index=False)
-        print(f"Sample raw data saved to ../analysis/sample_raw_data.csv")
+        sample_path = os.path.join(
+            script_dir, '..', 'analysis', 'sample_raw_data.csv')
+        df.head(20).to_csv(sample_path, index=False)
+        print(f"Sample raw data saved to {sample_path}")
 
     print("\nExploration complete!")

@@ -278,7 +278,7 @@ class DiligentDataCleaner:
                 f"Cleaned missing/unknown: {(self.cleaned_df[cleaned].isna() | (self.cleaned_df[cleaned] == 'Unknown')).sum()}")
 
         # Save the cleaned dataset
-        output_path = '../data/cleaned_diligent_dataset.csv'
+        output_path = 'data/cleaned_diligent_dataset.csv'
         self.cleaned_df.to_csv(output_path, index=False)
         print(f"\nCleaned dataset saved to: {output_path}")
 
@@ -291,7 +291,7 @@ def main():
     print("="*50)
 
     # Initialize cleaner
-    file_path = '../data/Diligent_GTM_Engineer_Exercise_with_Instructions.xlsx'
+    file_path = 'data/Diligent_GTM_Engineer_Exercise_with_Instructions.xlsx'
     cleaner = DiligentDataCleaner(file_path)
 
     # Load and clean data
